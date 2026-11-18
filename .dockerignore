@@ -1,0 +1,17 @@
+.git
+.env
+.env.*
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/node_modules
+frontend/dist
+backend/.model_cache
+backend/data/index
+backend/data/processed
+backend/data/app.db*
+backend/data/*.log
+backend/data/raw/*.log
+backend/data/raw/wasalt_html
+backend/tests
+*.md

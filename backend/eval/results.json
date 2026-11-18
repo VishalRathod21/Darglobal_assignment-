@@ -1,0 +1,647 @@
+{
+  "run_at": "2026-11-19 05:54:34 +1100",
+  "dataset_size": 40,
+  "index_chunks": 325,
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "retrieval": {
+    "questions_with_ground_truth": 26,
+    "k": 6,
+    "modes": {
+      "vector": {
+        "hit": 1.0,
+        "recall": 0.965,
+        "precision": 0.391,
+        "mrr": 0.946
+      },
+      "bm25": {
+        "hit": 0.885,
+        "recall": 0.859,
+        "precision": 0.346,
+        "mrr": 0.777
+      },
+      "hybrid": {
+        "hit": 1.0,
+        "recall": 0.974,
+        "precision": 0.449,
+        "mrr": 0.926
+      }
+    },
+    "relevance_gate": {
+      "out_of_scope_total": 5,
+      "out_of_scope_refused": 5,
+      "answerable_total": 26,
+      "answerable_passed": 26,
+      "threshold": 0.62
+    },
+    "latency_ms": {
+      "p50": 7.7,
+      "p95": 9.8
+    },
+    "details": [
+      {
+        "id": "dg-01",
+        "question": "What is DG1 and where is it located?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.5
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.743
+      },
+      {
+        "id": "dg-02",
+        "question": "What amenities does DG1 offer?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.716
+      },
+      {
+        "id": "dg-03",
+        "question": "What unit types and sizes are available at DG1?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 0.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "mrr": 0.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.25
+        },
+        "top_similarity": 0.684
+      },
+      {
+        "id": "dg-04",
+        "question": "Which projects does DarGlobal have in Oman?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.79
+      },
+      {
+        "id": "dg-05",
+        "question": "Does DarGlobal have any developments in London?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 0.3333333333333333,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 0.3333333333333333,
+          "precision": 0.16666666666666666,
+          "mrr": 0.16666666666666666
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 0.3333333333333333,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.777
+      },
+      {
+        "id": "dg-06",
+        "question": "Which fashion designer is behind Les Vagues in Doha?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.778
+      },
+      {
+        "id": "dg-07",
+        "question": "What did DarGlobal announce about Jeddah in November 2026?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.794
+      },
+      {
+        "id": "dg-08",
+        "question": "How much did DarGlobal pay for the land of its new Jeddah mixed-use development?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.816
+      },
+      {
+        "id": "dg-09",
+        "question": "What do ROI, ROE and ROL mean according to DarGlobal?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.866
+      },
+      {
+        "id": "dg-10",
+        "question": "Which contractor was appointed for Trump International Hotel & Tower Dubai?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.2
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.3333333333333333
+        },
+        "top_similarity": 0.825
+      },
+      {
+        "id": "dg-11",
+        "question": "How large was the syndicated loan Emirates NBD arranged for DarGlobal?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.87
+      },
+      {
+        "id": "dg-12",
+        "question": "Which car brand designed the interiors of The Astera?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.6666666666666666,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.5,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.6666666666666666,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.762
+      },
+      {
+        "id": "dg-13",
+        "question": "Where is Tierra Viva located?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.843
+      },
+      {
+        "id": "dg-14",
+        "question": "What revenue growth did DarGlobal report for the first half of 2026?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.799
+      },
+      {
+        "id": "dg-15",
+        "question": "What is the value of the Rayana infrastructure contract in Wadi Safar?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.825
+      },
+      {
+        "id": "dg-16",
+        "question": "What amenities does Trump Tower Jeddah offer?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.876
+      },
+      {
+        "id": "dg-17",
+        "question": "List DarGlobal's projects in Qatar.",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.844
+      },
+      {
+        "id": "ws-01",
+        "question": "Show me 3 bedroom apartments for sale in Riyadh under SAR 800,000",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 0.25
+        },
+        "bm25": {
+          "hit": 0.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "mrr": 0.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.801
+      },
+      {
+        "id": "ws-02",
+        "question": "Which 4-bedroom apartments for sale in Riyadh cost at most 800k SAR on Wasalt?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 0.75,
+          "precision": 0.5,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 0.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "mrr": 0.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.802
+      },
+      {
+        "id": "ws-03",
+        "question": "What apartments does Wasalt list in Al-Mahdiyah?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.777
+      },
+      {
+        "id": "ws-04",
+        "question": "Is there a Wasalt apartment for sale in Riyadh above 950,000 SAR?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 0.3333333333333333
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 0.3333333333333333
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.5
+        },
+        "top_similarity": 0.779
+      },
+      {
+        "id": "ws-05",
+        "question": "How big is the 450 sqm 4-bedroom apartment on Wasalt and what does it cost?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.16666666666666666,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.758
+      },
+      {
+        "id": "amb-01",
+        "question": "Tell me about the Trump projects",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.699
+      },
+      {
+        "id": "amb-02",
+        "question": "What is available in Jeddah?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 1.0,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.734
+      },
+      {
+        "id": "fu-01",
+        "question": "Who designed its interiors?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.784
+      },
+      {
+        "id": "fu-02",
+        "question": "What amenities does it have?",
+        "vector": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "bm25": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "hybrid": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        "top_similarity": 0.753
+      }
+    ]
+  },
+  "guardrails": {
+    "attacks": 4,
+    "attacks_blocked": 4,
+    "benign": 36,
+    "benign_wrongly_blocked": 0
+  }
+}

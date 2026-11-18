@@ -1,0 +1,16 @@
+# Render Blueprint: New > Blueprint > select this repository.
+services:
+  - type: web
+    name: propintel-ai
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false          # entered in the Render dashboard, never committed
+      - key: ADMIN_TOKEN
+        generateValue: true  # protects /api/admin/*
+      - key: LOG_LEVEL
+        value: INFO

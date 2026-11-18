@@ -1,0 +1,25 @@
+# Local production-like run:  docker compose up --build   ->  http://localhost:8000
+services:
+  app:
+    build: .
+    image: propintel-ai:latest
+    ports:
+      - "8000:8000"
+    # Compose reads .env from this folder automatically and substitutes the values below.
+    # Missing values fall back to the defaults in backend/app/core/config.py.
+    environment:
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      OPENROUTER_MODELS: ${OPENROUTER_MODELS:-google/gemma-4-31b-it:free,nvidia/nemotron-3.5-super-vl:free,openrouter/free}
+      ADMIN_TOKEN: ${ADMIN_TOKEN:-}
+      STATE_DIR: /app/state
+    volumes:
+      # Chat history, cache and metrics survive restarts. The knowledge base is in the image.
+      - propintel_state:/app/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M   # same ceiling as the free hosting tier, so memory problems show up locally
+
+volumes:
+  propintel_state:

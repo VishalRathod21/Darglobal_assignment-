@@ -1,0 +1,28 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/.model_cache/
+
+# node
+node_modules/
+frontend/dist/
+
+# generated at build/run time
+backend/data/index/
+backend/data/app.db*
+backend/data/*.log
+backend/data/raw/*.log
+backend/data/raw/wasalt_html/
+
+# editor / os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

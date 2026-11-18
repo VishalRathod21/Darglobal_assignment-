@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+}
+
+/* Answer typography. Long answers stay readable and never overflow the bubble. */
+.prose-answer {
+  @apply break-words text-[15px] leading-7;
+  overflow-wrap: anywhere;
+}
+.prose-answer p {
+  @apply mb-3 last:mb-0;
+}
+.prose-answer ul {
+  @apply mb-3 list-disc space-y-1 pl-5 last:mb-0;
+}
+.prose-answer ol {
+  @apply mb-3 list-decimal space-y-1 pl-5 last:mb-0;
+}
+.prose-answer strong {
+  @apply font-semibold;
+}
+.prose-answer h1,
+.prose-answer h2,
+.prose-answer h3 {
+  @apply mb-2 mt-4 text-[15px] font-semibold first:mt-0;
+}
+.prose-answer table {
+  @apply mb-3 block w-full overflow-x-auto text-sm;
+}
+.prose-answer th,
+.prose-answer td {
+  @apply border border-line px-2 py-1 text-left;
+}
+.prose-answer code {
+  @apply rounded bg-stone-100 px-1 py-0.5 text-[13px];
+}
+
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-stone-300;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

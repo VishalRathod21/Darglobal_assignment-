@@ -1,0 +1,35 @@
+{
+  "indexed_at": "2026-11-18T18:44:52+00:00",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "records": 88,
+  "chunks": 325,
+  "sources": {
+    "darglobal": {
+      "records": 67,
+      "chunks": 304,
+      "doc_types": {
+        "project": 38,
+        "page": 15,
+        "article": 14
+      },
+      "first_scraped_at": "2026-11-18T18:34:51+00:00",
+      "last_scraped_at": "2026-11-18T18:38:56+00:00"
+    },
+    "wasalt": {
+      "records": 21,
+      "chunks": 21,
+      "doc_types": {
+        "listing": 21
+      },
+      "first_scraped_at": "2026-11-18T18:36:22+00:00",
+      "last_scraped_at": "2026-11-18T18:36:22+00:00"
+    }
+  },
+  "last_run": {
+    "embedded": 76,
+    "unchanged": 249,
+    "deleted_stale": 32,
+    "total_in_index": 325,
+    "seconds": 2.4
+  }
+}
