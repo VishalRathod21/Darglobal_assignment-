@@ -64,6 +64,14 @@ def normalize_wasalt(row: dict[str, Any]) -> Record | None:
         for item in (data.get("amenities") or []) + (data.get("fittings") or []) + (data.get("featureAmenities") or [])
     ]
 
+    rent_freq_raw = info.get("rentFreq")
+    if isinstance(rent_freq_raw, dict):
+        rent_frequency = next(iter(rent_freq_raw.keys()), None)
+    elif rent_freq_raw:
+        rent_frequency = str(rent_freq_raw)
+    else:
+        rent_frequency = None
+
     record = Record(
         id=f"wasalt:{listing_id}",
         source="wasalt",
@@ -78,7 +86,7 @@ def normalize_wasalt(row: dict[str, Any]) -> Record | None:
         purpose=purpose,
         price=price,
         currency=info.get("currencyType") or "SAR",
-        rent_frequency=(info.get("rentFreq") or None) if purpose == "rent" else None,
+        rent_frequency=rent_frequency if purpose == "rent" else None,
         bedrooms=_to_int((quick.get("noOfBedrooms") or {}).get("value")),
         bathrooms=_to_int((quick.get("noOfBathrooms") or {}).get("value")),
         area_sqm=area,
