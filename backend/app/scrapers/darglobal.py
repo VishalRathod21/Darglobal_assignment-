@@ -19,7 +19,7 @@ from typing import Any
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
-from playwright.sync_api import Browser, Page, TimeoutError as PlaywrightTimeout, sync_playwright
+from playwright.sync_api import Browser, Error as PlaywrightError, Page, TimeoutError as PlaywrightTimeout, sync_playwright
 
 from app.core.config import get_settings
 from app.core.logging import configure_logging
@@ -71,23 +71,37 @@ class DarGlobalScraper:
             logger.info("skipped by robots.txt", extra={"url": url})
             return None
         time.sleep(self.settings.scraper_delay_seconds)
-        try:
-            response = page.goto(url, wait_until="domcontentloaded", timeout=60_000)
-            page.wait_for_selector("#__NEXT_DATA__", state="attached", timeout=25_000)
-            page.wait_for_timeout(1_200)  # let client-side sections hydrate
-        except PlaywrightTimeout:
-            html = page.content()
-            if _BLOCK_MARKERS.search(html):
-                raise BlockedError(f"challenge or block page at {url}")
-            logger.warning("timeout", extra={"url": url})
-            self.stats["failed"] += 1
-            return None
-        if response is not None and response.status in (403, 429):
-            raise BlockedError(f"HTTP {response.status} at {url}")
-        if response is not None and response.status >= 400:
-            self.stats["failed"] += 1
-            return None
-        return page.content()
+        for attempt in range(3):
+            try:
+                response = page.goto(url, wait_until="domcontentloaded", timeout=60_000)
+                page.wait_for_selector("#__NEXT_DATA__", state="attached", timeout=25_000)
+                page.wait_for_timeout(1_200)  # let client-side sections hydrate
+                if response is not None and response.status in (403, 429):
+                    raise BlockedError(f"HTTP {response.status} at {url}")
+                if response is not None and response.status >= 400:
+                    self.stats["failed"] += 1
+                    return None
+                return page.content()
+            except PlaywrightTimeout:
+                try:
+                    html = page.content()
+                    if _BLOCK_MARKERS.search(html):
+                        raise BlockedError(f"challenge or block page at {url}")
+                except Exception:
+                    pass
+                logger.warning("timeout", extra={"url": url, "attempt": attempt + 1})
+                if attempt == 2:
+                    self.stats["failed"] += 1
+                    return None
+            except PlaywrightError as exc:
+                if _BLOCK_MARKERS.search(str(exc)):
+                    raise BlockedError(f"challenge or block page at {url}")
+                logger.warning("network or load error, retrying", extra={"url": url, "error": str(exc), "attempt": attempt + 1})
+                if attempt == 2:
+                    self.stats["failed"] += 1
+                    return None
+            time.sleep(2.0 * (attempt + 1))
+        return None
 
     @staticmethod
     def clean_text(html: str) -> str:
