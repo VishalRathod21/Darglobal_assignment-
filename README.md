@@ -8,8 +8,8 @@ Built for the DarGlobal Junior AI Engineer (Applied AI) technical assignment.
 
 | | |
 |---|---|
-| **Live application** | _Not deployed yet. See [Deployment](#deployment); the URL goes here once the public instance has been verified._ |
-| **API documentation** | `/api/docs` (Swagger UI) on any running instance |
+| **Live application** | [https://darglobal-assignment.onrender.com](https://darglobal-assignment.onrender.com) |
+| **API documentation** | [https://darglobal-assignment.onrender.com/api/docs](https://darglobal-assignment.onrender.com/api/docs) |
 | **Evaluation report** | [backend/eval/REPORT.md](backend/eval/REPORT.md) |
 | **Build log and status** | [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) |
 
@@ -81,8 +81,8 @@ memory and latency, and retrieval already places a relevant chunk in the top 6 f
 
 | Source | Method | Collected | Notes |
 |---|---|---|---|
-| DarGlobal | Playwright Chromium, no stealth plugins, one page every ~1.2 s | 38 projects, 14 press releases, 9 corporate pages | `robots.txt` is read through the browser and enforced per URL |
-| Wasalt.sa | httpx, URL discovery from the public sitemap only | 21 apartment listings in Al-Mahdiyah, Riyadh | See limitation below |
+| DarGlobal | Playwright Chromium, no stealth plugins, one page every ~1.2 s | 38 projects, 14 press releases, 15 corporate pages (301 chunks) | `robots.txt` is read through the browser and enforced per URL |
+| Wasalt.sa | httpx + embedded JSON parser, public property sitemap | 415 verified property listings (415 chunks) | Respects `llms.txt`, no search pages, no PII |
 
 Rules the scrapers follow:
 
