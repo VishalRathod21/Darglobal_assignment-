@@ -9,47 +9,69 @@ body,
 }
 
 body {
-  @apply bg-paper font-sans text-ink antialiased;
+  @apply bg-paper font-sans text-ink antialiased selection:bg-amber-100 selection:text-amber-900;
 }
 
-/* Answer typography. Long answers stay readable and never overflow the bubble. */
+/* Luxury Glassmorphism & Surface Helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+/* Answer typography. Elegant, crisp real-estate executive presentation */
 .prose-answer {
-  @apply break-words text-[15px] leading-7;
+  @apply break-words text-[15px] leading-7 text-slate-800;
   overflow-wrap: anywhere;
 }
 .prose-answer p {
-  @apply mb-3 last:mb-0;
+  @apply mb-3.5 last:mb-0;
 }
 .prose-answer ul {
-  @apply mb-3 list-disc space-y-1 pl-5 last:mb-0;
+  @apply mb-3.5 list-disc space-y-1.5 pl-5 last:mb-0;
 }
 .prose-answer ol {
-  @apply mb-3 list-decimal space-y-1 pl-5 last:mb-0;
+  @apply mb-3.5 list-decimal space-y-1.5 pl-5 last:mb-0;
 }
 .prose-answer strong {
-  @apply font-semibold;
+  @apply font-semibold text-slate-900;
 }
 .prose-answer h1,
 .prose-answer h2,
 .prose-answer h3 {
-  @apply mb-2 mt-4 text-[15px] font-semibold first:mt-0;
+  @apply mb-2 mt-5 text-[15px] font-bold tracking-tight text-slate-900 first:mt-0;
 }
 .prose-answer table {
-  @apply mb-3 block w-full overflow-x-auto text-sm;
+  @apply my-3.5 block w-full overflow-x-auto rounded-lg border border-slate-200 text-sm shadow-sm;
 }
-.prose-answer th,
+.prose-answer th {
+  @apply border-b border-slate-200 bg-slate-50 px-3.5 py-2 font-semibold text-slate-700 text-left;
+}
 .prose-answer td {
-  @apply border border-line px-2 py-1 text-left;
+  @apply border-b border-slate-100 px-3.5 py-2 text-left text-slate-600 last:border-b-0;
 }
 .prose-answer code {
-  @apply rounded bg-stone-100 px-1 py-0.5 text-[13px];
+  @apply rounded-md bg-slate-100 px-1.5 py-0.5 text-[13px] font-mono text-slate-800;
 }
 
+/* Sleek modern scrollbars */
 .scroll-slim::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
+}
+.scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
 }
 .scroll-slim::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-stone-300;
+  @apply rounded-full bg-slate-200 hover:bg-slate-300;
 }
 
 @media (prefers-reduced-motion: reduce) {
