@@ -182,7 +182,7 @@ All settings are environment variables (see [.env.example](.env.example) and `ba
 | Variable | Default | Purpose |
 |---|---|---|
 | `OPENROUTER_API_KEY` | empty | Required for generated answers |
-| `OPENROUTER_MODELS` | `google/gemma-4-31b-it:free,nvidia/nemotron-3.5-super-vl:free,openrouter/free` | Fallback chain, tried in order |
+| `OPENROUTER_MODELS` | `nvidia/nemotron-3.5-super-vl:free,google/gemma-4-31b-it:free,openrouter/free` | Fallback chain, tried in order |
 | `ADMIN_TOKEN` | empty | When set, `/api/admin/*` requires the `X-Admin-Token` header |
 | `MIN_RELEVANCE` | `0.62` | Cosine similarity below which the assistant declines to answer |
 | `RATE_LIMIT_PER_MINUTE` | `12` | Chat requests per client IP |
@@ -230,8 +230,11 @@ Measured by `eval/run_eval.py` on a 40-question test set; full detail and method
 - On this corpus hybrid search gives the best recall and precision, while vector-only ranks the first
   relevant chunk slightly higher. The gain from BM25 and filters is concentrated in listing queries with
   numeric constraints.
-- Generated-answer metrics (faithfulness, citation correctness, hallucination rate, latency) are reported
-  in the evaluation report once the generation run has been executed with an API key.
+- Generated answers (40 questions against live OpenRouter free models, 19 November 2026): outcome accuracy
+  97.5%, fact coverage 100%, citation correctness 100%, numeric faithfulness 91.4% (35 figures),
+  hallucination rate 0% (9 of 9 unanswerable questions refused), latency p50 2.2 s and p95 21.4 s.
+- One request in that run found every model unavailable and returned the extractive fallback. Four answers
+  were cut off by a 700-token output cap; the cap is now 1500 and those figures were not re-measured.
 
 ## Deployment
 

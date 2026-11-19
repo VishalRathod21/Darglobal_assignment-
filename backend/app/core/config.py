@@ -31,11 +31,11 @@ class Settings(BaseSettings):
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
     # Ordered fallback chain. Tried left to right.
     openrouter_models: str = (
-        "google/gemma-4-31b-it:free,nvidia/nemotron-3.5-super-vl:free,openrouter/free"
+        "nvidia/nemotron-3.5-super-vl:free,google/gemma-4-31b-it:free,openrouter/free"
     )
     llm_timeout_seconds: float = 45.0
     llm_max_retries_per_model: int = 1
-    llm_max_output_tokens: int = 700
+    llm_max_output_tokens: int = 1500
     llm_temperature: float = 0.1
 
     # --- Retrieval ---

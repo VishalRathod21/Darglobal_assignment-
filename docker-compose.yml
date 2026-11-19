@@ -9,7 +9,7 @@ services:
     # Missing values fall back to the defaults in backend/app/core/config.py.
     environment:
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
-      OPENROUTER_MODELS: ${OPENROUTER_MODELS:-google/gemma-4-31b-it:free,nvidia/nemotron-3.5-super-vl:free,openrouter/free}
+      OPENROUTER_MODELS: ${OPENROUTER_MODELS:-nvidia/nemotron-3.5-super-vl:free,google/gemma-4-31b-it:free,openrouter/free}
       ADMIN_TOKEN: ${ADMIN_TOKEN:-}
       STATE_DIR: /app/state
     volumes:

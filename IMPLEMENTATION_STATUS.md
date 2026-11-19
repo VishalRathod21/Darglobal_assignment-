@@ -1,6 +1,6 @@
 # Implementation Status
 
-Last updated: 19 November 2026. Deadline: 20 November 2026.
+Last updated: 20 November 2026. Deadline: 20 November 2026.
 
 ## Summary
 
@@ -11,19 +11,18 @@ Last updated: 19 November 2026. Deadline: 20 November 2026.
 | 3. Data engineering | Done | 13 ingestion tests, manifest |
 | 4. Knowledge base | Done | 325 chunks indexed; second run embeds 0 |
 | 5. Retrieval | Done | 8 retrieval tests, evaluation (hit rate 100%) |
-| 6. LLM integration | Code done; **not yet run against the real OpenRouter API** | 8 client tests against a mock provider |
+| 6. LLM integration | Done | 8 client tests against a mock provider; 30 live answers from OpenRouter free models |
 | 7. Backend | Done | 13 API tests, manual curl checks |
 | 8. Frontend | Done | Production build, headless-browser screenshots at desktop and phone size |
 | 9. Reliability | Done | Guardrail, rate-limit, cache and outage tests |
-| 10. Evaluation | Retrieval and guardrails done; **generation metrics pending an API key** | `backend/eval/REPORT.md` |
+| 10. Evaluation | Done | `backend/eval/REPORT.md` |
 | 11. Docker | Done | Image built, container healthy under a 512 MB limit |
 | 12. Deployment | **Not done: needs the owner's GitHub and Render accounts** | n/a |
 | 13. Final delivery | README, status file, interview notes and email draft done; live URL pending | n/a |
 
 ## Waiting on the project owner
 
-1. **OpenRouter API key.** Create at https://openrouter.ai/keys and put it in `.env` as `OPENROUTER_API_KEY=...`.
-   Unblocks: real answers, verifying the chosen models respond, the generation evaluation.
+1. **OpenRouter API key.** Done: the key is in the git-ignored `.env`. It must also be entered in Render.
 2. **GitHub repository.** Create an empty repository and push (commands in the README). Git for Windows is
    installed at `C:\Program Files\Git` but is not on the PowerShell PATH; Git Bash works.
 3. **Render account.** New, Blueprint, pick the repository, enter the API key. Then the public URL must be
@@ -45,6 +44,8 @@ Last updated: 19 November 2026. Deadline: 20 November 2026.
 | Relevance gate | same | 5 of 5 out-of-scope refused; 26 of 26 answerable passed |
 | Injection screen | same | 4 of 4 attacks blocked; 0 of 36 normal questions blocked |
 | Retrieval latency | same | p50 about 8 ms, p95 about 10 ms on the development machine |
+| Generation evaluation | `python -m eval.run_eval --generation --pause 4` | Outcome accuracy 97.5%, fact coverage 100%, citation correctness 100%, numeric faithfulness 91.4%, hallucination rate 0%, p50 2.2 s, p95 21.4 s. 1 of 40 fell back to extractive mode; 4 answers hit the 700-token cap |
+| Token-cap fix | raised the cap to 1500, rebuilt the container, re-asked a truncated question | Complete answer, 6 sources, 5.9 s |
 | Live API without a key | curl against `uvicorn` | Degraded answer with sources; refusal for off-topic; block for injection |
 | UI | headless Chromium | Empty state, answer with source cards, refusal state, history restored after reload, no console errors, no horizontal overflow at 390 px |
 | Docker image | `docker build` | Builds; 759 MB |
@@ -59,8 +60,9 @@ Last updated: 19 November 2026. Deadline: 20 November 2026.
    widen coverage: save listing pages from a normal browser session and run the `--from-html` parser, or
    ask Wasalt for access.
 2. **DarGlobal press releases: 14 of 72** (first page of the press list only).
-3. **Model choice is untested.** The fallback chain uses model ids taken from OpenRouter's live model list
-   on 19 November 2026, but no request has been made with a real key yet.
+3. **Free models are unreliable.** In the live run `google/gemma-4-31b-it:free` returned HTTP 429 on every
+   attempt, so `nvidia/nemotron-3.5-super-vl:free` is now first in the chain (it served 27 of 30 answers).
+   The generation metrics were measured before the token cap was raised and were not re-measured.
 4. **Free-tier quota.** OpenRouter free models allow roughly 50 requests per day on an account without
    purchased credits (third-party figure, to be confirmed at openrouter.ai/docs/limits). The full
    generation evaluation uses about 42 requests.
@@ -82,7 +84,5 @@ Last updated: 19 November 2026. Deadline: 20 November 2026.
 
 ## Next actions, in order
 
-1. Add the API key, run three sample questions, confirm which model answers.
-2. `python -m eval.run_eval --generation && python -m eval.render_report`; review failures.
-3. Push to GitHub, deploy on Render, open the public URL from a different network, ask the sample questions.
-4. Put the live URL in the README and the submission email, then send.
+1. Push to GitHub, deploy on Render, open the public URL from a different network, ask the sample questions.
+2. Put the live URL in the README and the submission email, then send.

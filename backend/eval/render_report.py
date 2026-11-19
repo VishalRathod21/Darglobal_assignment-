@@ -104,6 +104,15 @@ def render(results: dict[str, Any]) -> str:
             "property assistant must not be wrong. It is a lower bound on unsupported claims, not a full "
             "claim-by-claim judgement; an LLM judge was not used because it would double the quota cost.",
             "",
+            f"Answers cut off by the output-token cap: {sum(1 for r in generation['details'] if r.get('completion_tokens', 0) >= 700)} "
+            f"of {lat['llm_answers']}. This run used a 700-token cap; the model spends part of it on reasoning. "
+            "The cap was raised to 1500 after the run and the figures above were not re-measured.",
+            "",
+            "A figure counts as unsupported when it is absent from the passages the answer cites. That also "
+            "flags a number repeated from the user's question (`ws-04`: the 950,000 threshold) and a correct "
+            "figure attributed to the wrong passage number (`ws-03`: all eight figures exist in the indexed "
+            "Wasalt listings).",
+            "",
             "Failures in this run:",
         ]
         failures = [
