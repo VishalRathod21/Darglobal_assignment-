@@ -18,13 +18,6 @@ function describe(docTypes: Record<string, number>): string {
     .join(" · ");
 }
 
-function formatDate(iso?: string): string {
-  if (!iso) return "unknown";
-  const date = new Date(iso);
-  return Number.isNaN(date.getTime())
-    ? iso
-    : date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
-}
 
 interface Props {
   conversations: Conversation[];
